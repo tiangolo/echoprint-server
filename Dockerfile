@@ -26,7 +26,7 @@ RUN apt-get install -y \
     zlib1g-dev \
     software-properties-common \
     python-software-properties \
-    make && \
+    make \
     git
 
 RUN apt-add-repository -y ppa:mc3man/trusty-media && \
