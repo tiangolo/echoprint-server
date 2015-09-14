@@ -27,15 +27,12 @@ RUN apt-get install -y \
     software-properties-common \
     python-software-properties \
     make && \
-    apt-get autoremove
-
-RUN apt-get install -y git
+    git
 
 RUN apt-add-repository -y ppa:mc3man/trusty-media && \
     apt-get update && \
     apt-get install -y \
-    ffmpeg && \
-    apt-get autoremove
+    ffmpeg
 
 RUN sudo easy_install web.py
 RUN sudo easy_install pyechonest
@@ -72,7 +69,6 @@ RUN make && \
 
 WORKDIR $ECHOPRINT_PATH
 
-# RUN git clone git://github.com/echonest/echoprint-server.git
 COPY ./ ./echoprint-server/
 
 COPY start_solr.sh $ECHOPRINT_PATH/
