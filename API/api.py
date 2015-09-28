@@ -30,7 +30,7 @@ urls = (
 
 class ingest:
     def POST(self):
-        params = web.input(track_id="default", fp_code="", artist=None, release=None, track=None, length=None, codever=None)
+        params = web.input(track_id="default", fp_code="", channel=None, timestamp_start=None, timestamp_end=None, length=None, codever=None)
         if params.track_id == "default":
             track_id = fp.new_track_id()
         else:
@@ -50,9 +50,9 @@ class ingest:
                 "fp": code_string,
                 "length": params.length,
                 "codever": params.codever }
-        if params.artist: data["artist"] = params.artist
-        if params.release: data["release"] = params.release
-        if params.track: data["track"] = params.track
+        if params.channel: data["channel"] = params.channel
+        if params.timestamp_start: data["timestamp_start"] = params.timestamp_start
+        if params.timestamp_end: data["timestamp_end"] = params.timestamp_end
         fp.ingest(data, do_commit=True, local=False)
 
         return json.dumps({"track_id":track_id, "status":"ok"})
@@ -79,6 +79,8 @@ class info:
         metadata_use = metadata.copy()
         if 'import_date' in metadata_use:
             metadata_use['import_date'] = metadata_use['import_date'].strftime('%Y-%m-%d %H:%M:%S')
+            metadata_use['timestamp_start'] = metadata_use['timestamp_start'].strftime('%Y-%m-%d %H:%M:%S')
+            metadata_use['timestamp_end'] = metadata_use['timestamp_end'].strftime('%Y-%m-%d %H:%M:%S')
 
         return json.dumps({"ok":True, "query":stuff.fp_code, "message":response.message(), "match":response.match(), "score":response.score, \
                         "qtime":response.qtime, "track_id":response.TRID, "total_time":response.total_time, "metadata": metadata_use})
