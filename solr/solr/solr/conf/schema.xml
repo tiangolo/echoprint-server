@@ -24,10 +24,11 @@
 
     <!-- The hashes associated with a track, which is our default search field -->
     <field name="fp" type="fphash" indexed="true" stored="false" required="true"/>
-    
-    <field name="artist" type="string" indexed="true" stored="true" required="false"/>
-    <field name="release" type="string" indexed="true" stored="true" required="false"/>
-    <field name="track" type="string" indexed="true" stored="true" required="false"/>
+
+    <field name="channel" type="int" indexed="true" stored="true" required="false" />
+    <field name="timestamp_start" type="int" indexed="true" stored="true" required="false" />
+    <field name="timestamp_end" type="int" indexed="true" stored="true" required="false" />
+
     <field name="length" type="int" indexed="true" stored="true" required="true"/>
     <field name="codever" type="string" indexed="true" stored="true" required="true"/>
     <field name="source" type="string" indexed="true" stored="true" required="true"/>
@@ -35,7 +36,7 @@
 
   </fields>
 
-  <!-- Field to use to determine and enforce document uniqueness. 
+  <!-- Field to use to determine and enforce document uniqueness.
        Unless this field is marked with required="false", it will be a required field
   -->
   <uniqueKey>track_id</uniqueKey>
