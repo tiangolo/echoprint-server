@@ -26,8 +26,8 @@
     <field name="fp" type="fphash" indexed="true" stored="false" required="true"/>
 
     <field name="channel" type="int" indexed="true" stored="true" required="false" />
-    <field name="timestamp_start" type="int" indexed="true" stored="true" required="false" />
-    <field name="timestamp_end" type="int" indexed="true" stored="true" required="false" />
+    <field name="timestamp_start" type="date" indexed="true" stored="true" required="false" />
+    <field name="timestamp_end" type="date" indexed="true" stored="true" required="false" />
 
     <field name="length" type="int" indexed="true" stored="true" required="true"/>
     <field name="codever" type="string" indexed="true" stored="true" required="true"/>
