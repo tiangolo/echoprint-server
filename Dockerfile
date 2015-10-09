@@ -71,11 +71,11 @@ WORKDIR $ECHOPRINT_PATH
 
 COPY ./ ./echoprint-server/
 
+COPY ingest.sh $ECHOPRINT_PATH/
 COPY start_solr.sh $ECHOPRINT_PATH/
 COPY start_tokyo.sh $ECHOPRINT_PATH/
 COPY start_web_api.sh $ECHOPRINT_PATH/
 COPY run_all.sh $ECHOPRINT_PATH/
-COPY ingest.sh $ECHOPRINT_PATH/
 COPY test_codes.sh $ECHOPRINT_PATH/
 
 EXPOSE 8080
